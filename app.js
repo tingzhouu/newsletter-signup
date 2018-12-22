@@ -3,10 +3,12 @@ const express = require("express");
 const request = require("request");
 const app = new express();
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-app.listen(3000, function() {
-  console.log(`Server is running on port ${3000}`);
+app.listen(process.env.PORT || 3000, function() {
+  console.log(`Server is running on port ${process.env.PORT || 3000}`);
 });
 
 
@@ -20,21 +22,18 @@ app.post("/", function(req, res) {
   let email = req.body.email;
 
   let data = {
-    members: [
-      {
-        email_address: email,
-        status: "subscribed",
-        merge_fields: {
-          FNAME: firstName,
-          LNAME: lastName,
-        }
+    members: [{
+      email_address: email,
+      status: "subscribed",
+      merge_fields: {
+        FNAME: firstName,
+        LNAME: lastName,
       }
-    ]
+    }]
   }
 
   let jsonData = JSON.stringify(data);
 
-  console.log(email);
 
   let options = {
     url: "https://us7.api.mailchimp.com/3.0/lists/67d60097a8",
@@ -42,7 +41,7 @@ app.post("/", function(req, res) {
     headers: {
       "Authorization": "tingzhou 25d4a71757d77fbd9631eab84fde3e0f-us7",
     },
-    // body: jsonData,
+    body: jsonData,
   };
 
   request(options, function(error, response, body) {
@@ -61,7 +60,3 @@ app.post("/", function(req, res) {
 app.post("/failure", function(req, res) {
   res.redirect("/");
 });
-
-
-// 25d4a71757d77fbd9631eab84fde3e0f-us7
-// 67d60097a8
