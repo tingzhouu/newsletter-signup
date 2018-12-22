@@ -31,7 +31,7 @@ Open terminal in the directory of folder
 
 Key **node app.js** in terminal
 
-Open your browser, type **localhost:3000/**, and press enter!
+Open your browser, type **localhost:3000/** and press enter!
 
 
 ## Authors
