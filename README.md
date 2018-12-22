@@ -14,7 +14,10 @@ To create server
 To deploy and host server
 
 **MailChimp**
-To maintain email list.
+Interact with MailChimp using API to maintain email list
+
+**Bootstrap**
+Design of webpage
 
 **body-parser**
 Parse responses from API
@@ -33,4 +36,4 @@ Open your browser, type **localhost:3000/**, and press enter!
 
 ## Authors
 
-* **Ting Zhou** - [GitHub Link](https://github.com/tingzhouu)
+* **[Ting Zhou](https://github.com/tingzhouu)**
