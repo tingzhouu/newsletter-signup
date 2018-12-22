@@ -42,20 +42,24 @@ app.post("/", function(req, res) {
     headers: {
       "Authorization": "tingzhou 25d4a71757d77fbd9631eab84fde3e0f-us7",
     },
-    body: jsonData,
+    // body: jsonData,
   };
 
   request(options, function(error, response, body) {
     if (error) {
-      res.send("<h1>Subscription Failed :(</h1>)");
+      res.sendFile(__dirname + "/failure.html");
     } else {
       if (response.statusCode === 200) {
-        res.send("<h1>Success!</h1>");
+        res.sendFile(__dirname + "/success.html");
       } else {
-        res.send("<h1>Subscription Failed :(</h1>)");
+        res.sendFile(__dirname + "/failure.html");
       }
     }
   });
+});
+
+app.post("/failure", function(req, res) {
+  res.redirect("/");
 });
 
 
