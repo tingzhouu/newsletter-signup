@@ -24,6 +24,10 @@ app.post("/", function(req, res) {
       {
         email_address: email,
         status: "subscribed",
+        merge_fields: {
+          FNAME: firstName,
+          LNAME: lastName,
+        }
       }
     ]
   }
@@ -43,9 +47,13 @@ app.post("/", function(req, res) {
 
   request(options, function(error, response, body) {
     if (error) {
-      console.log(error);
+      res.send("<h1>Subscription Failed :(</h1>)");
     } else {
-      console.log(response.statusCode);
+      if (response.statusCode === 200) {
+        res.send("<h1>Success!</h1>");
+      } else {
+        res.send("<h1>Subscription Failed :(</h1>)");
+      }
     }
   });
 });
